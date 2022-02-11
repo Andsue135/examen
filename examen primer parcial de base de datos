@@ -1,0 +1,45 @@
+select * from bd_facts.tbl_clientes;
+select * from bd_facts.tbl_asesores;
+select * from bd_facts.tbl_facturas;
+
+
+ select 
+ t1.numeroID,
+ concat_ws(' ',nombres,apellidos) as'nombrecompleto'
+ from bd_facts.tbl_clientes t1
+ inner join bd_facts.tbl_asesores t2
+;
+
+
+ select 
+t1.nombrecompleto,
+t2.idFactura,
+t2.fechaEmision,
+t2.fechaVencimiento,
+t2.fechapagada
+ from bd_facts.tbl_clientes t1
+ inner join bd_facts.tbl_facturas t2
+where t2.fechapagada is null;
+
+
+
+     insert into bd_facts.tbl_facturas (
+     idFactura, idCliente, tipopago, fechaEmision, fechaVencimiento, cantidadProductos, subTotalPagar, totalISV, totalpagar, estado, fechapagada)
+	values (
+    null, curdate(), 1, 0, 0, 0, 0
+    );
+    
+    
+    select * from bd_facts.tbl_clientes;
+select * from bd_facts.tbl_asesores;
+select * from bd_facts.tbl_facturas;
+
+
+    insert into bd_facts.tbl_facturas(
+		idFactura, idCliente, totalpagar
+    ) values ( 0, 0, 0 );
+    
+   
+    select count(*) into cantidadProductos 
+    from bd_facts.tbl_facturas
+    where idFactura = idFActura;
